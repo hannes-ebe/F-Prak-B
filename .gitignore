@@ -1,2 +1,5 @@
 *.ipynb_checkpoints
 *.pdf
+.venv/
+.idea/
+*.csv#
