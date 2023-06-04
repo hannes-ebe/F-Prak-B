@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.gridspec import GridSpec
 import linecache
 from scipy.optimize import curve_fit
 from scipy.signal import find_peaks
@@ -53,11 +54,13 @@ class Oszi:
         plt.tight_layout()
         plt.savefig("figures/dt/test.pdf")
         return fig, ax1, ax2
+def I_to_B(I):
+    return 
 
 def main():
-    a=Oszi("data/g_faktor/B_rampe/500kHz")
-    a.plot(ScopeSettings=True,ylabel1="U in V Channel 1",ylabel2="U in V Channel 2",title="Orientierungsezit")
-    plt.show()
+    # a=Oszi("data/g_faktor/B_rampe/500kHz")
+    # a.plot(ScopeSettings=True,ylabel1="U in V Channel 1",ylabel2="U in V Channel 2",title="Orientierungsezit")
+    # plt.show()
     f_list=np.append(750,np.arange(1000,10001,500))
     peak1=[]
     peak2=[]
@@ -66,14 +69,23 @@ def main():
     for f in f_list:
         a=Oszi(f"data/g_faktor/B_rampe/{f}kHz")
         print(len(a.peaks))
-        peak1.append(a.peaks[1])
-        peak2.append(a.peaks[2])
-        peak3.append(a.peaks[4])
-        peak4.append(a.peaks[5])
-    plt.plot(peak1)
-    plt.plot(peak2)
-    plt.plot(peak3)
-    plt.plot(peak4)
+        peak1.append(a.ch1[a.peaks[1]])
+        peak2.append(a.ch1[a.peaks[2]])
+        peak3.append(a.ch1[a.peaks[4]])
+        peak4.append(a.ch1[a.peaks[5]])
+    fig = plt.figure(figsize=(11, 6))
+    gs = GridSpec(8, 5)
+    fig1 = fig.add_subplot(gs[:, :])
+    fig1.set_title("g-Faktor Bestimmung mittels Magnetfeldrampe")
+    fig1.set_ylabel("I in A")
+    fig1.set_xlabel("Frequenz in Hz")
+    fig1.scatter(f_list,peak1,c="C0",label="1. Peak")
+    fig1.scatter(f_list,peak2,c="C1",label="2. Peak")
+    fig1.scatter(f_list,peak3,c="C2",label="3. Peak")
+    fig1.scatter(f_list,peak4,c="C3",label="4. Peak")
+    plt.tight_layout()
+    plt.legend()
+    # plt.savefig("plots/leckrate/leckrate.pdf")
     plt.show()
 
 
