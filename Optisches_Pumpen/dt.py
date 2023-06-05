@@ -5,37 +5,6 @@ import pandas as pd
 import linecache
 from scipy.optimize import curve_fit
 
-# class fourier:
-#     def __init__(self,f: float,max_n: int,t: np.ndarray) -> None:
-#         self.f=f
-#         self.omega=2*np.pi*self.f
-#         self.max_n=max_n
-#         self.t=t
-#         self.U=self.get_U()
-#         self.settings=pd.read_csv("data/ohne_B/dt_messung/30Hz_5Vpp_ScopeSettings.txt",sep=" ")
-#         self.messung=pd.read_csv("data/ohne_B/dt_messung/30Hz_5Vpp",sep="\t",names=["t","U1","U2"])
-#         # print(self.settings)
-#         self.plot()
-#         pass
-
-#     def get_U(self):
-#         U_arr=np.zeros(len(self.t))
-#         for ti,t in enumerate(self.t):
-#             for n in range(1,self.max_n):
-#                 U_arr[ti]+=np.sin((2*n-1)*self.omega*t)/(2*n-1)
-#         return U_arr
-
-
-
-
-#     def plot(self):
-#         # plt.plot(self.t,self.U)
-#         print(self.settings.loc[0,"1"])
-#         U_trans=np.array(self.messung["U1"])+float(self.settings.loc[1,"1"])
-#         plt.plot(self.messung["t"],U_trans)
-#         plt.plot(self.messung["t"],np.array(self.messung["U2"]))
-#         plt.show()
-
 class Oszi:
     def __init__(self,path,f):
         '''Path ohne Endung angeben.'''
@@ -55,9 +24,9 @@ class Oszi:
         self.R=1.7223
         t_off=0.0002
         for ti,t in enumerate(self.time):
-            for n in range(1,5000):
-                U_arr[ti]+=np.sin((2*n-1)*self.omega*(t-t_off))/(2*n-1)
-                I_arr[ti]+=np.sin((2*n-1)*self.omega*(t-t_off)-np.arctan((2*n-1)*self.omega*self.L/self.R))/((2*n-1)**2*self.omega**2*self.L**2*+self.R**2)
+            for n in range(1,1000):
+                U_arr[ti]+=4/np.pi*7/8*np.sin((2*n-1)*self.omega*(t-t_off))/(2*n-1)
+                I_arr[ti]+=4/np.pi*(np.sin((2*n-1)*self.omega*(t-t_off)-np.arctan((2*n-1)*self.omega*self.L/self.R)))/((2*n-1)**2*self.omega**2*self.L**2*+self.R**2)
         return U_arr,I_arr
 
     def get_L(self):
@@ -87,25 +56,22 @@ class Oszi:
             # scale2 = float(linecache.getline(self.scope,10).split()[1])
             print(offset1)
             print(offset2)
-            ax1.plot(self.time,self.ch1+offset1,label='Channel 1',color='C0')
+            ax1.plot(self.time,self.ch1+offset1+0.15,label='Channel 1',color='C0')
             # ax1.plot(self.time_mod,self.exp_fit(self.time_mod),label='Channel 1',color='C0')
             ax2.plot(self.time,self.ch2+offset2,label='Channel 2',color="C1")
-            ax1.plot(self.time,self.fourier_U,label='Fourier Spannung',color='C0')
-            ax2.plot(self.time,self.fourier_I,label='Fourier Strom',color='C1')
+            ax1.plot(self.time,self.fourier_U,label='Fourier Spannung',color='C0',ls="--")
+            ax2.plot(self.time,self.fourier_I,label='Fourier Strom',color='C1',ls="--")
             ax1.legend(loc=2)
             ax2.legend(loc=3)
-            ax1.tick_params(axis='y', labelcolor='blue')
-            ax2.tick_params(axis='y', labelcolor='red')
         else:
             ax1.plot(self.time,self.ch1,label='Channel 1',color='C0')
             ax2.plot(self.time,self.ch2,label='Channel 2',color='C1')
             ax1.plot(self.time,self.fourier_U,label='Fourier Spannung',color='C0')
             ax2.plot(self.time,self.fourier_I,label='Fourier Strom',color='C1')
-            # ax1.plot(self.time_mod,self.exp_fit(self.time_mod),label='Channel 1 fit',color='C1',ls="--")
-            # ax1.legend(loc=3)
-            # ax2.legend(loc=3)
-            ax1.tick_params(axis='y', labelcolor='C0')
-            ax2.tick_params(axis='y', labelcolor='C1')
+        ax1.tick_params(axis='y', labelcolor='C0')
+        ax2.tick_params(axis='y', labelcolor='C1')
+        ax1.legend(loc=1)
+        ax2.legend(loc=4)
         ax1.set_xlabel(xlabel)
         ax1.set_ylabel(ylabel1,c="C0")
         ax2.set_ylabel(ylabel2,c='C1')
@@ -116,7 +82,7 @@ class Oszi:
 
 def dt():
     a=Oszi("data/ohne_B/l_messung/30Hz_5Vpp",30)
-    a.get_L(1901)
+    a.get_L()
     a.plot(ScopeSettings=True,ylabel1="U in V",ylabel2="U in V",title="Messung der Induktivität")
     plt.show()
     # b=fourier(0.25,1000,np.arange(0,10,0.01))
