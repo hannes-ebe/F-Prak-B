@@ -4,6 +4,7 @@ from matplotlib.gridspec import GridSpec
 import pandas as pd
 import linecache
 from scipy.optimize import curve_fit
+plt.rcParams.update({'font.size': 22})
 
 class Oszi:
     def __init__(self,path,f):
@@ -24,7 +25,7 @@ class Oszi:
         self.R=1.7223
         t_off=0.00011
         for ti,t in enumerate(self.time):
-            for n in range(1,3000):
+            for n in range(1,1000):
                 U_arr[ti]+=4/np.pi*7/8*np.sin((2*n-1)*self.omega*(t-t_off))/(2*n-1)
                 I_arr[ti]+=4/np.pi*(np.sin((2*n-1)*self.omega*(t-t_off)-np.arctan((2*n-1)*self.omega*self.L/self.R)))/((2*n-1)**2*self.omega**2*self.L**2*+self.R**2)
         return U_arr,I_arr
@@ -62,11 +63,9 @@ class Oszi:
             ax1.plot(self.time,self.fourier_U,label='Fourier Spannung',color='C0',ls="--")
             ax2.plot(self.time,self.fourier_I,label='Fourier Strom',color='C1',ls="--")
             pos_0 = np.argmin(np.abs(self.fourier_I))
-            ax2.scatter(self.time[pos_0],self.fourier_I[pos_0])
-            ax2.scatter(self.time[2376],self.ch2[2376]+offset2)
-            print(self.time[550])
-            ax1.legend(loc=2)
-            ax2.legend(loc=3)
+            ax2.scatter(self.time[pos_0],self.fourier_I[pos_0],c="C2",label="geschärtzter Start des Pumpens")
+            ax2.scatter(self.time[2376],self.ch2[2376]+offset2,c="C2")
+            print(self.time[2376]-0.00011,self.time[pos_0]-0.00011,self.time[2376]-self.time[pos_0])
         else:
             ax1.plot(self.time,self.ch1,label='Channel 1',color='C0')
             ax2.plot(self.time,self.ch2,label='Channel 2',color='C1')
@@ -74,8 +73,8 @@ class Oszi:
             ax2.plot(self.time,self.fourier_I,label='Fourier Strom',color='C1')
         ax1.tick_params(axis='y', labelcolor='C0')
         ax2.tick_params(axis='y', labelcolor='C1')
-        ax1.legend(loc=1)
-        ax2.legend(loc=4)
+        ax1.legend(bbox_to_anchor=(1.09,1),loc="upper left")
+        ax2.legend(bbox_to_anchor=(1.09,0.85),loc="upper left")
         ax1.set_xlabel(xlabel)
         ax1.set_ylabel(ylabel1,c="C0")
         ax2.set_ylabel(ylabel2,c='C1')
@@ -87,7 +86,7 @@ class Oszi:
 def dt():
     a=Oszi("data/ohne_B/dt_messung/30Hz_5Vpp",30)
     a.get_L()
-    a.plot(ScopeSettings=True,ylabel1="U in V",ylabel2="U in V",title="Messung der Induktivität")
+    a.plot(ScopeSettings=True,ylabel1="Ch 1 U in V",ylabel2="Ch 2 U in V",title="Messung der Induktivität",figsize=(20,10))
     plt.show()
     # b=fourier(0.25,1000,np.arange(0,10,0.01))
 
