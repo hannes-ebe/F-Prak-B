@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1761.3499"
+   height="289.32806"
+   viewBox="0 0 1761.3499 289.32806"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   sodipodi:docname="aufbau.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="0.65208333"
+     inkscape:cx="861.85304"
+     inkscape:cy="148.75399"
+     inkscape:window-width="1778"
+     inkscape:window-height="1371"
+     inkscape:window-x="1662"
+     inkscape:window-y="32"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="1390.7666"
+       y="285.3847"
+       width="455.8721"
+       height="139.38077"
+       id="rect608" />
+    <rect
+       x="122.61706"
+       y="277.86261"
+       width="429.10843"
+       height="142.31009"
+       id="rect602" />
+    <rect
+       x="489.18668"
+       y="79.120941"
+       width="272.31418"
+       height="166.57529"
+       id="rect512" />
+    <rect
+       x="561.29517"
+       y="138.14674"
+       width="247.77182"
+       height="86.238396"
+       id="rect506" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-98.521263,-205.03329)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:6"
+       id="rect234"
+       width="479.73624"
+       height="167.65881"
+       x="101.52126"
+       y="267.75464" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:6"
+       id="rect250"
+       width="479.73624"
+       height="167.65881"
+       x="1377.1349"
+       y="267.75464" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6.13047"
+       d="M 780.19423,264.75464 V 438.41345"
+       id="path414" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6.13047"
+       d="M 979.19619,264.75464 V 438.41345"
+       id="path450" />
+    <text
+       xml:space="preserve"
+       id="text504"
+       style="font-size:37.3333px;white-space:pre;shape-inside:url(#rect506);fill:none;stroke:#000000;stroke-width:6" />
+    <text
+       xml:space="preserve"
+       id="text510"
+       style="font-size:37.3333px;white-space:pre;shape-inside:url(#rect512);fill:none;stroke:#000000;stroke-width:6" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;fill:none;stroke:#000000;stroke-width:6"
+       x="622.2489"
+       y="241.50204"
+       id="text518"><tspan
+         sodipodi:role="line"
+         x="622.2489"
+         y="241.50204"
+         id="tspan570"
+         style="font-size:48px;fill:#000000;stroke:none">λ/4-Plättchen</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:48px;fill:none;stroke:#000000;stroke-width:6"
+       x="886.04382"
+       y="493.68167"
+       id="text592"><tspan
+         sodipodi:role="line"
+         x="886.04382"
+         y="493.68167"
+         id="tspan590"
+         style="font-size:48px;fill:#000000;stroke:none">Polfilter</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:6.13047"
+       d="M 1178.1982,264.75464 V 438.41345"
+       id="path594" />
+    <text
+       xml:space="preserve"
+       style="font-size:48px;fill:none;stroke:#000000;stroke-width:6"
+       x="1071.3115"
+       y="245.75111"
+       id="text598"><tspan
+         sodipodi:role="line"
+         x="1071.3115"
+         y="245.75111"
+         id="tspan596"
+         style="font-size:48px;fill:#000000;stroke:none">ND-Filter</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text600"
+       style="font-size:96px;white-space:pre;shape-inside:url(#rect602);fill:#000000;stroke:none;stroke-width:6"
+       transform="translate(83.631569,23.095764)"><tspan
+         x="122.61719"
+         y="362.80078"
+         id="tspan3191">Laser</tspan></text>
+    <text
+       xml:space="preserve"
+       id="text606"
+       style="font-size:96px;white-space:pre;shape-inside:url(#rect608);fill:#000000;stroke:none;stroke-width:6"
+       transform="translate(10.963943,17.050842)"><tspan
+         x="1390.7656"
+         y="370.32227"
+         id="tspan3193">Detektor</tspan></text>
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:6;stroke-dasharray:24, 48;stroke-dashoffset:0"
+       d="M 596.14329,345.72812 H 1385.9077"
+       id="path616" />
+  </g>
+</svg>
