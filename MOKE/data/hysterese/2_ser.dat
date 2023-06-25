@@ -1,0 +1,12 @@
+Time:            15:41:22
+Temperature:     -55.0 �C
+Maximum current: 2.00 A
+Number of steps: 5
+Samples:         10
+Measurements:    1
+Delay:           1.0 s
+Comment:         
+
+First column : Current through magnets in A
+Second column: Magnetic field in mT
+Third column : Angle of rotation in �
