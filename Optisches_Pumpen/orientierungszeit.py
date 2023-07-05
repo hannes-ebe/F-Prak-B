@@ -62,11 +62,11 @@ class Oszi:
         return fig, ax1, ax2
 
 def main():
-    a=Oszi("data/ohne_B/orientierungszeit/30Hz_5Vpp")
+    a=Oszi("data/ohne_B/orientierungszeit/100Hz_5Vpp")
     start_stop_30=[420,1901]
     start_stop_60=[200,2000]
     start_stop_100=[700,1700]
-    a.get_fit(start_stop_30[0],start_stop_30[1],[1.6,-1/0.00295,-0.1])
+    a.get_fit(start_stop_100[0],start_stop_100[1],[1.6,-1/0.00295,-0.1])
     a.plot(ScopeSettings=True,ylabel1="U in V Channel 1",ylabel2="U in V Channel 2",title="Orientierungsezit")
     plt.show()
 
